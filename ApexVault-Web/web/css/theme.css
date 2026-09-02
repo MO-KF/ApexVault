@@ -1,0 +1,54 @@
+:root {
+
+    --accent: #f7e479;
+    --accent-soft: #f7e4791c;
+    --ink: #1b2a4a;
+    --ink-strong: #0b0c10;
+    --ink-muted: #3a4a68;
+    --cyan: #00F0FF;
+    --danger: #e74c3c;
+    --danger-dark: #ab3023;
+    --panel: #12141c;
+
+    --global--size: clamp(2rem, 4vw, 5rem);
+    --anim--hover-time: 400ms;
+    --anim--hover-ease: cubic-bezier(0.25, 1, 0.5, 1);
+
+    color-scheme: light;
+}
+
+@property --angle-1 {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: -75deg;
+}
+
+@property --angle-2 {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: -45deg;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--ink-strong);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+}
+
+.app-container {
+    width: 840px;
+    height: 530px;
+    background-image: url('../assets/main_page.png');
+    background-size: 840px 530px;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
