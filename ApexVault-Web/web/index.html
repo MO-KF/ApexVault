@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>ApexVault</title>
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+    <div class="app-container" id="app-container">
+
+        <div class="top-bar-controls">
+            <button class="top-btn" title="About / Developers" onclick="openAboutTab()">👤</button>
+            <button class="top-btn" title="Language Menu" onclick="toggleLangMenu(event)">☰</button>
+            <button class="top-btn" title="Minimize" onclick="minimizeApp()">—</button>
+            <button class="top-btn close-btn" title="Close" onclick="closeApp()">✕</button>
+        </div>
+
+        <div id="lang-dropdown" class="lang-card hidden" onclick="event.stopPropagation()">
+            <legend class="lang-card-title" id="txt-choose-lang">انتخاب زبان / Choose Language</legend>
+
+            <label for="lang-fa" class="lang-option">
+                <div class="lang-icon-box">🇮🇷</div>
+                <span class="lang-text">فارسی (Persian)</span>
+                <input type="radio" id="lang-fa" name="language_status" checked onchange="setLanguage('fa')">
+            </label>
+
+            <label for="lang-en" class="lang-option">
+                <div class="lang-icon-box">🇬🇧</div>
+                <span class="lang-text">English</span>
+                <input type="radio" id="lang-en" name="language_status" onchange="setLanguage('en')">
+            </label>
+        </div>
+
+        <div class="menu-wrapper">
+            <div class="radio-container" style="--total-radio: 3;">
+
+                <input type="radio" id="radio-1" name="nav" checked onchange="showTab('specs')">
+                <label for="radio-1" id="nav-specs">System Info</label>
+
+                <input type="radio" id="radio-2" name="nav" onchange="showTab('pm')">
+                <label for="radio-2" id="nav-pm">Password Manager</label>
+
+                <input type="radio" id="radio-3" name="nav" onchange="showTab('about')">
+                <label for="radio-3" id="nav-about">About Project</label>
+
+                <div class="glider-container">
+                    <div class="glider"></div>
+                </div>
+
+            </div>
+
+            <div class="sidebar-counters">
+                <div class="counter-item">
+                    <span id="lbl-locked-apps">Locked Apps:</span>
+                    <strong id="cnt-locked-apps">0</strong>
+                </div>
+                <div class="counter-item">
+                    <span id="lbl-locked-folders">Locked Folders:</span>
+                    <strong id="cnt-locked-folders">0</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-wrapper">
+
+            <div id="tab-specs" class="tab-page">
+                <h2 class="panel-title" id="title-specs">System Specifications</h2>
+
+                <div class="spec-list">
+                    <div class="spec-item">
+                        <span class="spec-icon">💻</span>
+                        <div class="spec-text">
+                            <strong id="lbl-os">OS:</strong> <span id="sys-os">Loading...</span>
+                        </div>
+                    </div>
+
+                    <div class="spec-item">
+                        <span class="spec-icon">🖥️</span>
+                        <div class="spec-text">
+                            <strong id="lbl-device">Device Name:</strong> <span id="sys-device">Loading...</span>
+                        </div>
+                    </div>
+
+                    <div class="spec-item">
+                        <span class="spec-icon">⚙️</span>
+                        <div class="spec-text">
+                            <strong id="lbl-cpu">CPU:</strong> <span id="sys-cpu">Loading...</span>
+                        </div>
+                    </div>
+
+                    <div class="spec-item">
+                        <span class="spec-icon">🧠</span>
+                        <div class="spec-text">
+                            <strong id="lbl-ram">RAM:</strong> <span id="sys-ram">Loading...</span>
+                        </div>
+                    </div>
+
+                    <div class="spec-item">
+                        <span class="spec-icon">🎮</span>
+                        <div class="spec-text">
+                            <strong id="lbl-gpu">Graphics (GPU):</strong> <span id="sys-gpu">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-pm" class="tab-page" style="display: none;">
+                <div class="vault-manager-container">
+
+                    <div class="action-top-row">
+                        <div class="button-wrap">
+                            <div class="button-shadow"></div>
+                            <button type="button" onclick="lockApp()">
+                                <span>
+                                    <span class="btn-icon">⚡</span>
+                                    <span id="btn-lock-app-txt">LOCK APPLICATION (.EXE)</span>
+                                </span>
+                            </button>
+                        </div>
+
+                        <div class="button-wrap">
+                            <div class="button-shadow"></div>
+                            <button type="button" onclick="lockFolder()">
+                                <span>
+                                    <span class="btn-icon">📂</span>
+                                    <span id="btn-lock-folder-txt">LOCK SECURE FOLDER</span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="vault-table-card">
+                        <table class="vault-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 25%;" id="th-target">Target Name</th>
+                                    <th style="width: 15%;" id="th-type">Type</th>
+                                    <th style="width: 45%;" id="th-path">Path</th>
+                                    <th style="width: 15%;" id="th-status">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="vault-table-body">
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="action-bottom-row">
+                        <div class="button-wrap button-wrap-remove">
+                            <div class="button-shadow"></div>
+                            <button type="button" onclick="removeSelectedProtection()">
+                                <span>
+                                    <span class="btn-icon">🛡️</span>
+                                    <span id="btn-remove-txt">REMOVE PROTECTION</span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="tab-about" class="tab-page" style="display: none;">
+                <h2 class="panel-title" id="title-about">Project Developers</h2>
+                <div class="developers-card">
+                    <p class="dev-description" id="txt-dev-desc">این یک برنامه دانشجویی است، طراحی و پیاده‌سازی شده توسط M-KF.</p>
+                    <div class="dev-list">
+                        <div class="dev-item">🛡️ <strong>M-KF</strong></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="pwd-setup-modal" class="custom-modal-overlay">
+        <div class="custom-modal-box">
+            <div class="modal-close" onclick="closeModal('pwd-setup-modal')">✕</div>
+
+            <div class="modal-header">
+                <span id="setup-title-msg" style="color: #00F0FF;">Set Password for:</span><br>
+                <span id="setup-target-name" style="color: #00F0FF;">bin</span>
+            </div>
+
+            <form onsubmit="submitPasswordSetup(event)">
+                <div class="input-group">
+                    <label id="lbl-enter-pwd">Enter Password:</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="pwd1" class="dark-input" autocomplete="new-password">
+                        <span class="eye-icon" onclick="togglePassword('pwd1', this)">👁️</span>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label id="lbl-confirm-pwd">Confirm Password:</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="pwd2" class="dark-input" autocomplete="new-password">
+                        <span class="eye-icon" onclick="togglePassword('pwd2', this)">👁️</span>
+                    </div>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="chk-face" class="custom-checkbox">
+                    <label for="chk-face" id="lbl-enable-face">Enable Face ID (Optional)</label>
+                </div>
+
+                <div id="setup-err" class="error-text"></div>
+
+                <button type="submit" class="ok-btn">OK</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="gate-modal" class="custom-modal-overlay">
+        <div class="custom-modal-box">
+            <div class="modal-close" onclick="closeGateModal()">✕</div>
+
+            <div class="modal-header">
+                <span id="gate-title-msg" style="color: #ff4d4d;">Access Restricted:</span><br>
+                <span id="gate-target-name" style="color: #ffffff;">Target</span>
+            </div>
+
+            <form onsubmit="submitGateUnlock(event)">
+                <div class="input-group">
+                    <label id="lbl-gate-pwd">Enter Password:</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="gate-pwd" class="dark-input" autocomplete="off">
+                        <span class="eye-icon" onclick="togglePassword('gate-pwd', this)">👁️</span>
+                    </div>
+                </div>
+
+                <div id="gate-face-btn-container" style="display: none;">
+                    <button type="button" class="ok-btn face-btn" onclick="attemptFaceUnlock()" id="btn-gate-face">📷 Unlock with Face ID</button>
+                </div>
+
+                <div id="gate-err" class="error-text"></div>
+
+                <button type="submit" class="ok-btn" id="btn-gate-unlock">Unlock</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/i18n.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/modals.js"></script>
+</body>
+</html>

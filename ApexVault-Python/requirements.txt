@@ -1,0 +1,16 @@
+# ApexVault-Python (PyQt6 desktop version)
+# Core GUI
+PyQt6>=6.5
+
+# Vault encryption key protection (DPAPI via win32crypt).
+# Strongly recommended: without it a weaker machine-derived key is used.
+pywin32>=306 ; sys_platform == "win32"
+
+# Face recognition stack (Windows: install via pip wheels)
+opencv-python>=4.8
+face-recognition>=1.3.0
+numpy>=1.24
+
+# Build the Rust core separately:
+#   cd apex_crypto && cargo build --release
+# then copy apex_crypto.pyd to the project root.

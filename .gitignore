@@ -1,0 +1,63 @@
+# ============================================================
+#  ApexVault monorepo root .gitignore
+#  Covers both versions: ApexVault-Python & ApexVault-Web
+# ============================================================
+
+# --- Git backup folders (old repo history, not part of the repo) ---
+.git_backup/
+
+# --- Python (both versions) ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+ENV/
+env/
+.mypy_cache/
+.pytest_cache/
+
+# --- Rust build outputs (huge! never commit) ---
+apex_crypto/target/
+**/apex_crypto/target/
+target/
+
+# --- Compiled Rust extensions (built per-machine) ---
+*.pyd
+*.so
+*.dll
+
+# --- PyInstaller / packaging ---
+build/
+dist/
+*.spec
+!build.spec
+
+# --- CRITICAL: user data & secrets (never commit these) ---
+key.vault
+key.vault.*
+vault_data.json
+vault_data.json.*
+vault_data.*
+*.vault
+*.apx
+config.json
+faces/
+*.pkl
+*.npy
+
+# --- Audit reports & local logs (working notes, not public) ---
+context/
+*.log
+
+# --- OS / IDE files ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+desktop.ini
+.vscode/
+.idea/
+
+# --- Local working notes / backups ---
+old_backup/

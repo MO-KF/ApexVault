@@ -1,0 +1,39 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+
+# --- Rust build artifacts (large!) ---
+apex_crypto/target/
+
+# --- PyInstaller ---
+build/
+dist/
+*.spec
+!build.spec
+
+# --- Vault runtime data (NEVER commit: contains encrypted secrets) ---
+*.apx
+*.vault
+key.vault
+vault_data.*
+*.log
+
+# --- OS / editor ---
+Thumbs.db
+Desktop.ini
+.DS_Store
+.vscode/
+.idea/
+
+# --- Local working notes (not part of the public repo) ---
+context/
+old_backup/
+
+# --- App data artifacts accidentally created in repo root ---
+config.json
+faces/

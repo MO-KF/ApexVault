@@ -1,0 +1,52 @@
+# --- Python artifacts ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+ENV/
+env/
+
+# --- User data & secrets (CRITICAL: never commit these) ---
+key.vault
+key.vault.*
+vault_data.json
+vault_data.json.*
+config.json
+faces/
+*.pkl
+*.npy
+
+# --- Rust build outputs ---
+apex_crypto/target/
+apex_crypto/**/*.pyd
+apex_crypto/**/*.so
+apex_crypto/**/*.dll
+
+# --- Compiled extensions at root ---
+*.pyd
+*.so
+*.dll
+
+# --- OS / IDE files ---
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# --- Audit & local logs ---
+context/
+*.log
+
+# --- Build artifacts (extra safety) ---
+build/
+dist/
+*.spec
+!build.spec
+
+# --- Vault runtime data (extra safety: encrypted secrets) ---
+*.vault
+*.apx
+vault_data.*

@@ -1,0 +1,555 @@
+.panel-title {
+    color: var(--ink);
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.spec-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding-left: 20px;
+}
+
+.spec-item {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    color: var(--ink);
+}
+
+.spec-icon {
+    font-size: 20px;
+    width: 35px;
+    display: inline-block;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.spec-text strong {
+    color: var(--ink);
+    font-weight: 700;
+    margin-right: 5px;
+}
+
+.spec-text span {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.developers-card {
+    background: rgba(27, 42, 74, 0.05);
+    border-radius: 10px;
+    padding: 20px;
+    color: var(--ink);
+    transition: all 0.2s ease;
+}
+
+.dev-description {
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.dev-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dev-item {
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.vault-manager-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.action-top-row {
+    display: flex;
+    gap: 12px;
+}
+
+.action-top-row .button-wrap {
+    flex: 1;
+}
+
+.button-wrap {
+    position: relative;
+    z-index: 2;
+    border-radius: 999vw;
+    background: transparent;
+    pointer-events: none;
+    transition: all var(--anim--hover-time) var(--anim--hover-ease);
+}
+
+.button-shadow {
+    --shadow-cuttoff-fix: 2em;
+    position: absolute;
+    width: calc(100% + var(--shadow-cuttoff-fix));
+    height: calc(100% + var(--shadow-cuttoff-fix));
+    top: calc(0% - var(--shadow-cuttoff-fix) / 2);
+    left: calc(0% - var(--shadow-cuttoff-fix) / 2);
+    filter: blur(clamp(2px, 0.125em, 12px));
+    -webkit-filter: blur(clamp(2px, 0.125em, 12px));
+    overflow: visible;
+    pointer-events: none;
+}
+
+.button-shadow::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    border-radius: 999vw;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.05));
+    width: calc(100% - var(--shadow-cuttoff-fix) - 0.25em);
+    height: calc(100% - var(--shadow-cuttoff-fix) - 0.25em);
+    top: calc(var(--shadow-cuttoff-fix) - 0.5em);
+    left: calc(var(--shadow-cuttoff-fix) - 0.875em);
+    padding: 0.125em;
+    box-sizing: border-box;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    transition: all var(--anim--hover-time) var(--anim--hover-ease);
+    overflow: visible;
+    opacity: 1;
+}
+
+.button-wrap button {
+    --border-width: clamp(1px, 0.0625em, 4px);
+    all: unset;
+    cursor: pointer;
+    position: relative;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    pointer-events: auto;
+    z-index: 3;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    background: linear-gradient(
+        -75deg,
+        rgba(255, 255, 255, 0.05),
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0.05)
+    );
+    border-radius: 999vw;
+    box-shadow:
+        inset 0 0.125em 0.125em rgba(0, 0, 0, 0.05),
+        inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.5),
+        0 0.25em 0.125em -0.125em rgba(0, 0, 0, 0.2),
+        0 0 0.1em 0.25em inset rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(clamp(1px, 0.125em, 4px));
+    -webkit-backdrop-filter: blur(clamp(1px, 0.125em, 4px));
+    transition: all var(--anim--hover-time) var(--anim--hover-ease);
+}
+
+.button-wrap button:hover {
+    transform: scale(0.985);
+    box-shadow:
+        inset 0 0.125em 0.125em rgba(0, 0, 0, 0.05),
+        inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.5),
+        0 0.15em 0.05em -0.1em rgba(0, 0, 0, 0.25),
+        0 0 0.05em 0.1em inset rgba(255, 255, 255, 0.5);
+}
+
+.button-wrap button span {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    user-select: none;
+    font-family: 'Segoe UI', sans-serif;
+    letter-spacing: -0.01em;
+    font-weight: 700;
+    font-size: 0.82em;
+    color: var(--ink);
+    padding-inline: 1em;
+    padding-block: 0.55em;
+    transition: all var(--anim--hover-time) var(--anim--hover-ease);
+}
+
+.button-wrap button span::after {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 3;
+    width: calc(100% - var(--border-width));
+    height: calc(100% - var(--border-width));
+    top: calc(0% + var(--border-width) / 2);
+    left: calc(0% + var(--border-width) / 2);
+    box-sizing: border-box;
+    border-radius: 999vw;
+    overflow: clip;
+    background: linear-gradient(
+        var(--angle-2),
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.5) 40% 50%,
+        rgba(255, 255, 255, 0) 55%
+    );
+    mix-blend-mode: screen;
+    pointer-events: none;
+    background-size: 200% 200%;
+    background-position: 0% 50%;
+    transition: background-position calc(var(--anim--hover-time) * 1.25) var(--anim--hover-ease);
+}
+
+.button-wrap button:hover span::after {
+    background-position: 25% 50%;
+}
+
+.button-wrap button::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    border-radius: 999vw;
+    width: calc(100% + var(--border-width));
+    height: calc(100% + var(--border-width));
+    top: calc(0% - var(--border-width) / 2);
+    left: calc(0% - var(--border-width) / 2);
+    padding: var(--border-width);
+    box-sizing: border-box;
+    background:
+        conic-gradient(
+            from var(--angle-1) at 50% 50%,
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0) 5% 40%,
+            rgba(0, 0, 0, 0.3) 50%,
+            rgba(0, 0, 0, 0) 60% 95%,
+            rgba(0, 0, 0, 0.3)
+        ),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    transition: all var(--anim--hover-time) var(--anim--hover-ease);
+}
+
+.action-bottom-row {
+    width: 100%;
+}
+
+.button-wrap-remove {
+    width: 100%;
+}
+
+.button-wrap-remove button {
+    background: linear-gradient(
+        -75deg,
+        rgba(231, 76, 60, 0.1),
+        rgba(231, 76, 60, 0.22),
+        rgba(231, 76, 60, 0.1)
+    );
+    box-shadow:
+        inset 0 0.125em 0.125em rgba(0, 0, 0, 0.05),
+        inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.4),
+        0 0.2em 0.1em -0.1em rgba(231, 76, 60, 0.18),
+        0 0 0.1em 0.15em inset rgba(231, 76, 60, 0.15);
+}
+
+.button-wrap-remove button:hover {
+    background: linear-gradient(
+        -75deg,
+        rgba(231, 76, 60, 0.18),
+        rgba(231, 76, 60, 0.35),
+        rgba(231, 76, 60, 0.18)
+    );
+}
+
+.button-wrap-remove button span {
+    color: var(--danger-dark);
+    font-size: 0.82em;
+    font-weight: 800;
+    padding-block: 0.55em;
+    letter-spacing: 0.02em;
+}
+
+.button-wrap-remove button:hover span {
+    color: #78281f;
+    text-shadow: 0 0 8px rgba(231, 76, 60, 0.35);
+}
+
+.vault-table-card {
+    height: 270px;
+    width: 100%;
+    background: rgb(228, 233, 242);
+    border-radius: 16px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    backdrop-filter: blur(12px);
+    box-shadow:
+        inset 0px 45px 30px rgba(34, 36, 50, 0.12),
+        inset 0px -45px 30px rgba(255, 255, 255, 0.85),
+        1px 1px 3px #ffffff,
+        -1px -1px 3px rgba(68, 68, 68, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-sizing: border-box;
+}
+
+.vault-table-card::-webkit-scrollbar {
+    width: 6px;
+}
+
+.vault-table-card::-webkit-scrollbar-thumb {
+    background: rgba(27, 42, 74, 0.2);
+    border-radius: 10px;
+}
+
+.vault-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 13px;
+    position: relative;
+    z-index: 2;
+}
+
+.vault-table th {
+    position: sticky;
+    top: 0;
+    background: rgba(223, 227, 238, 0.95);
+    color: var(--ink);
+    font-weight: 700;
+    padding: 11px 14px;
+    border-bottom: 1px solid rgba(27, 42, 74, 0.1);
+    backdrop-filter: blur(8px);
+    z-index: 10;
+}
+
+.vault-row {
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.vault-table td {
+    padding: 10px 14px;
+    color: #2c3e50;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 220px;
+}
+
+.vault-row td.path-cell {
+    max-width: 200px;
+    direction: ltr;
+    unicode-bidi: embed;
+}
+
+td.status-cell {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+tr.vault-row:hover {
+    background: rgba(247, 228, 121, 0.18);
+}
+
+tr.vault-row.selected {
+    background: rgba(247, 228, 121, 0.35);
+    outline: none;
+}
+
+tr.vault-row.selected td:first-child {
+    box-shadow: inset 3px 0 0 var(--ink);
+}
+
+.empty-row td {
+    text-align: center;
+    color: #8a93a6;
+    font-style: italic;
+    cursor: default;
+}
+
+.empty-row:hover {
+    background: transparent !important;
+}
+
+.custom-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.custom-modal-overlay.open {
+    display: flex;
+}
+
+.custom-modal-box {
+    background-color: #f7f7f7;
+    border-radius: 16px;
+    width: 380px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2), -10px -10px 20px rgba(255, 255, 255, 0.7);
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    box-sizing: border-box;
+    direction: ltr;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #333;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+    z-index: 2;
+}
+.modal-close:hover {
+    opacity: 1;
+}
+
+.modal-header {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 20px;
+    line-height: 1.4;
+    word-break: break-all;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.input-group label {
+    display: block;
+    color: gray;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+    width: 80%;
+    text-align: left;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+.dark-input {
+    padding: 1rem 1.2rem;
+    margin: 0.5rem 0;
+    border-radius: 2rem;
+    display: block;
+    width: 80%;
+    border: none;
+    box-shadow: inset 6px 6px 8px rgba(97, 97, 97, 0.075),
+      6px 6px 6px rgba(255, 255, 255, 0.781);
+    outline: none;
+    background-color: inherit;
+    color: #333;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+}
+
+.dark-input:focus-visible {
+    box-shadow: inset 6px 6px 8px rgba(97, 97, 97, 0.075),
+      6px 6px 6px rgba(255, 255, 255, 0.781),
+      0 0 0 2px rgba(27, 42, 74, 0.25);
+}
+
+.eye-icon {
+    position: absolute;
+    right: 42px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 13px;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: gray;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.custom-checkbox {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #555;
+}
+
+.checkbox-group label {
+    color: gray;
+    font-size: 0.85rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.ok-btn {
+    width: 80%;
+    margin: 15px auto 0 auto;
+    display: block;
+    padding: 0.9rem 1.2rem;
+    font-weight: bold;
+    border-radius: 2rem;
+    border: none;
+    background-color: #f7f7f7;
+    box-shadow: -3px -3px 5px white, 3px 3px 5px rgba(209, 209, 209, 0.705);
+    color: black;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.ok-btn:hover {
+    box-shadow: inset -2px -2px 4px white, inset 2px 2px 4px rgba(209, 209, 209, 0.705);
+}
+
+.ok-btn.face-btn {
+    background-color: #2b3e50;
+    color: #ffffff;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.error-text {
+    color: var(--danger);
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 5px;
+    min-height: 16px;
+}

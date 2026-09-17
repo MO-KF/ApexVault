@@ -1,0 +1,24 @@
+# ApexVault — Python dependencies
+# Tested with Python 3.10–3.14 on Windows 10/11.
+
+# Core (required)
+pywebview>=6.0
+
+# Vault encryption (strongly recommended; without it a slower pure-python fallback is used)
+cryptography>=42.0
+
+# Windows integration — auto-installed on Windows.
+# pywebview's WinForms backend (file dialogs, tray icon via pythonnet) needs it.
+pywin32>=306 ; sys_platform == "win32"
+
+# Face ID feature (optional)
+opencv-python>=4.8
+face-recognition>=1.3
+numpy>=1.24
+
+# Rust crypto core (optional) — builds the apex_crypto wheel.
+# Requires the Rust toolchain (https://rustup.rs) + maturin:
+#   pip install maturin
+#   cd apex_crypto && maturin develop --release
+# When installed, vault encryption/decryption is handled by the Rust core
+# automatically (core/vault_crypto.py detects it at import time).
